@@ -4,7 +4,7 @@
 **Authors:** Ruiyi Zhan, Dajun Huang, Lu Shi, Shaoshuai Zhang (University of Electronic Science and Technology of China)
 
 Badges requested: **Artifact Available**, **Artifact Functional**, **Results Reproduced** (CPU and GPU).
-DOI: TODO (Zenodo). License: Apache-2.0 (see `LICENSE` and `NOTICE`).
+DOI: [10.5281/zenodo.23853714](https://doi.org/10.5281/zenodo.23853714) (v1.0-ae; all versions: [10.5281/zenodo.23853713](https://doi.org/10.5281/zenodo.23853713)). License: Apache-2.0 (see `LICENSE` and `NOTICE`).
 
 The artifact contains the boundary-row (BR) values-only divide-and-conquer (D&C) tridiagonal eigensolver, in two implementations:
 - **CPU** (`cpu/`): a LAPACK-style Fortran/OpenMP prototype (`DSTEDC_DC_BR`) and the paper's CPU benchmark jobs (Tables 1–5, Figs. 4–5).

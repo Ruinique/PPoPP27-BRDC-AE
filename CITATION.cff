@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this artifact, please cite it as below."
+title: "Artifact for PPoPP 2027 Paper #234: Revisiting Eigenvalue-Only Divide-and-Conquer Tridiagonal Eigensolver from Algorithmic Perspective"
+license: Apache-2.0
+repository-code: "https://github.com/Ruinique/PPoPP27-BRDC-AE"
+authors:
+  - {family-names: Zhan, given-names: Ruiyi, affiliation: "University of Electronic Science and Technology of China", email: rui1@std.uestc.edu.cn}
+  - {family-names: Huang, given-names: Dajun, affiliation: "University of Electronic Science and Technology of China", email: djhuang_1@std.uestc.edu.cn}
+  - {family-names: Shi, given-names: Lu, affiliation: "University of Electronic Science and Technology of China", email: shilu75999@std.uestc.edu.cn}
+  - {family-names: Zhang, given-names: Shaoshuai, affiliation: "University of Electronic Science and Technology of China", email: szhang94@uestc.edu.cn}

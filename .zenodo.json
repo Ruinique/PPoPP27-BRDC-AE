@@ -1,0 +1,39 @@
+{
+  "title": "Artifact for PPoPP 2027 Paper #234: Revisiting Eigenvalue-Only Divide-and-Conquer Tridiagonal Eigensolver from Algorithmic Perspective",
+  "upload_type": "software",
+  "license": "Apache-2.0",
+  "description": "Artifact for PPoPP 2027 paper #234: the tridiagonal eigenvalue solver for CPU (LAPACK/OpenBLAS-based) and GPU (CUDA), with scripts to reproduce the paper's results. Part of the CPU code has been upstreamed to Reference-LAPACK (PR #1424).",
+  "creators": [
+    {
+      "name": "Zhan, Ruiyi",
+      "affiliation": "University of Electronic Science and Technology of China"
+    },
+    {
+      "name": "Huang, Dajun",
+      "affiliation": "University of Electronic Science and Technology of China"
+    },
+    {
+      "name": "Shi, Lu",
+      "affiliation": "University of Electronic Science and Technology of China"
+    },
+    {
+      "name": "Zhang, Shaoshuai",
+      "affiliation": "University of Electronic Science and Technology of China"
+    }
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/Reference-LAPACK/lapack/pull/1424",
+      "relation": "isSupplementedBy",
+      "scheme": "url"
+    }
+  ],
+  "keywords": [
+    "eigenvalue",
+    "tridiagonal",
+    "divide and conquer",
+    "LAPACK",
+    "GPU",
+    "PPoPP artifact"
+  ]
+}

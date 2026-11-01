@@ -1,0 +1,68 @@
+--- a/driver/others/CMakeLists.txt
++++ b/driver/others/CMakeLists.txt
+@@ -40,6 +40,7 @@
+   openblas_error_handle.c
+   openblas_env.c
+   openblas_get_num_procs.c
++  openblas_get_num_nodes.c
+   openblas_get_num_threads.c
+   blas_server_callback.c
+ )
+--- a/driver/others/Makefile
++++ b/driver/others/Makefile
+@@ -1,7 +1,7 @@
+ TOPDIR	= ../..
+ include ../../Makefile.system
+ 
+-COMMONOBJS	 = memory.$(SUFFIX) xerbla.$(SUFFIX) c_abs.$(SUFFIX) z_abs.$(SUFFIX) openblas_set_num_threads.$(SUFFIX) openblas_get_num_threads.$(SUFFIX) openblas_get_num_procs.$(SUFFIX) openblas_get_config.$(SUFFIX) openblas_get_parallel.$(SUFFIX) openblas_error_handle.$(SUFFIX) openblas_env.$(SUFFIX) blas_server_callback.$(SUFFIX)
++COMMONOBJS	 = memory.$(SUFFIX) xerbla.$(SUFFIX) c_abs.$(SUFFIX) z_abs.$(SUFFIX) openblas_set_num_threads.$(SUFFIX) openblas_get_num_threads.$(SUFFIX) openblas_get_num_procs.$(SUFFIX) openblas_get_num_nodes.$(SUFFIX) openblas_get_config.$(SUFFIX) openblas_get_parallel.$(SUFFIX) openblas_error_handle.$(SUFFIX) openblas_env.$(SUFFIX) blas_server_callback.$(SUFFIX)
+ 
+ #COMMONOBJS	+= slamch.$(SUFFIX) slamc3.$(SUFFIX) dlamch.$(SUFFIX)  dlamc3.$(SUFFIX)
+ 
+@@ -160,6 +160,9 @@
+ openblas_get_num_procs.$(SUFFIX) : openblas_get_num_procs.c
+ 	$(CC) $(CFLAGS) -c $< -o $(@F)
+ 
++openblas_get_num_nodes.$(SUFFIX) : openblas_get_num_nodes.c
++	$(CC) $(CFLAGS) -c $< -o $(@F)
++
+ openblas_get_config.$(SUFFIX) : openblas_get_config.c
+ 	$(CC) $(CFLAGS) -c $< -o $(@F)
+ 
+--- a/driver/others/init.c
++++ b/driver/others/init.c
+@@ -766,7 +766,11 @@
+ /* Public Functions */
+ 
+ int get_num_procs(void)  { return numprocs; }
+-int get_num_nodes(void)  { return numnodes; }
++int get_num_nodes(void)  {
++  if ((common != (void *)-1) && (common -> num_nodes > 0))
++    return common -> num_nodes;
++  return numnodes;
++}
+ int get_node_equal(void) {
+ 
+   return (((blas_cpu_number % numnodes) == 0) && node_equal);
+@@ -1049,4 +1053,3 @@
+ int get_node(void) { return 1;}
+ #endif
+ 
+-
+--- a/lapack-netlib/SRC/dlaed4_br.f
++++ b/lapack-netlib/SRC/dlaed4_br.f
+@@ -86,7 +86,13 @@
+             ORG = I + 1
+          END IF
+       END IF
+-      TAU = DLAM - D( ORG )
++*
++*     Avoid reconstructing TAU from DLAM-D(ORG).  DLAED4 already
++*     returned DELTA(ORG) in its shifted coordinate, so using
++*     TAU=-DELTA(ORG) preserves that final rounded denominator and
++*     avoids an extra add/subtract rounding through DLAM.
++*
++      TAU = -DELTA( ORG )
+ *
+       IF( I.EQ.N ) THEN
+          NEAR1 = DELTA( N-1 )

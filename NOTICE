@@ -1,0 +1,17 @@
+PPoPP 2027 Artifact for Paper #234
+Copyright 2026 Ruiyi Zhan and the authors of PPoPP 2027 paper #234
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+Files under cpu/src/ (dstedc_dc_br.f, dlaed0_br.f, dlaed4_br.f, dlaed7_br.f,
+dlaed9_br.f) and cpu/patches/ are derived from LAPACK (Reference-LAPACK) and
+OpenBLAS, which are distributed under the BSD-3-Clause license:
+
+  Copyright (c) 1992-2025 The University of Tennessee and The University of
+  Tennessee Research Foundation; The University of California Berkeley;
+  The University of Colorado Denver.
+  Copyright (c) 2011-2025 The OpenBLAS Project.
+
+Those original copyright notices and the BSD-3-Clause terms are retained for
+the derived portions. Upstream: https://github.com/Reference-LAPACK/lapack
+(see PR #1424) and https://github.com/OpenMathLib/OpenBLAS.

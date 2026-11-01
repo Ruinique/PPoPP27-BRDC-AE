@@ -2,7 +2,7 @@
 **Revisiting Eigenvalue-Only Divide-and-Conquer Tridiagonal Eigensolver from Algorithmic Perspective**
 
 Badges requested: **Artifact Available**, **Artifact Functional**, **Results Reproduced** (CPU and GPU).
-DOI: TODO (Zenodo). License: TODO (see `LICENSE`).
+DOI: TODO (Zenodo). License: Apache-2.0 (see `LICENSE` and `NOTICE`).
 
 The artifact contains the boundary-row (BR) values-only divide-and-conquer (D&C) tridiagonal eigensolver, in two implementations:
 - **CPU** (`cpu/`): a LAPACK-style Fortran/OpenMP prototype (`DSTEDC_DC_BR`) and the paper's CPU benchmark jobs (Tables 1–5, Figs. 4–5).

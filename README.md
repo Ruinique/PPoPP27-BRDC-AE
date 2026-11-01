@@ -1,6 +1,8 @@
 # Artifact for PPoPP 2027 Paper #234
 **Revisiting Eigenvalue-Only Divide-and-Conquer Tridiagonal Eigensolver from Algorithmic Perspective**
 
+**Authors:** Ruiyi Zhan, Dajun Huang, Lu Shi, Shaoshuai Zhang (University of Electronic Science and Technology of China)
+
 Badges requested: **Artifact Available**, **Artifact Functional**, **Results Reproduced** (CPU and GPU).
 DOI: TODO (Zenodo). License: Apache-2.0 (see `LICENSE` and `NOTICE`).
 

@@ -8,6 +8,8 @@ The artifact contains the boundary-row (BR) values-only divide-and-conquer (D&C)
 - **CPU** (`cpu/`): a LAPACK-style Fortran/OpenMP prototype (`DSTEDC_DC_BR`) and the paper's CPU benchmark jobs (Tables 1–5, Figs. 4–5).
 - **GPU** (`gpu/`): the CUDA prototype and `tridiag_dc_bench`, which compares BR against cuSOLVER `cusolverDnXstedc` (compz=N) (Fig. 6, Sec. 5.6).
 
+Part of this repository has been upstreamed to Reference-LAPACK: the BR solver is merged as the new `DSTEBR`/`SSTEBR` routines (with `xLAED0_BR`, `xLAED4_BR`, `xLAED7_BR`, `xLAED8_BR`, `xLAED9_BR`, LAPACKE wrappers and tests) in [Reference-LAPACK/lapack#1424](https://github.com/Reference-LAPACK/lapack/pull/1424). The `cpu/` sources here are the exact versions used for the paper's experiments.
+
 Reviewers are expected to use their own hardware. Section 2 lists what is needed and Section 6 gives scaled-down options.
 
 ## 1. Layout
@@ -118,4 +120,4 @@ Absolute times depend on the machine. Reviewers should check the ratios and tren
 - Dense reduction and back-transformation, which the paper excludes. The GPU dense-input and eigenvector paths are stubbed out in this artifact.
 - Distributed solver (future work).
 - ELPA probes (supplemental; `cpu/jobs/install_elpa_cpu_mpi.sh` and `run_elpa_tridiagonal_job.sh` are provided as-is).
-- Lean 4 proof sources: TODO, decide whether to include them.
+- Formal (Lean 4) proofs are not part of this artifact.

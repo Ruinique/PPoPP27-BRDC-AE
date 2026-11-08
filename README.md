@@ -36,7 +36,7 @@ Provenance: the CPU code comes from https://github.com/uestc-ndsl-hpc/OpenBLAS, 
 | Part | Hardware | Software |
 |---|---|---|
 | GPU (Fig. 6, Sec. 5.6) | An H100- or 80 GB-class NVIDIA GPU (sm_90 reference; sm_80 also builds). At N=49,152 cuSOLVER's workspace is about 54 GiB, and at N=65,536 it is 96.0 GiB (which is the point of Sec. 5.6). | CUDA 13.2 (cuBLAS, cuSOLVER with `cusolverDnXstedc`, CUB, NVTX), CMake ≥ 3.18, a C++17 host compiler, LAPACK (OpenBLAS or MKL) for the optional CPU reference |
-| CPU (Tables 1–5, Figs. 4–5) | A 56-core-class x86-64 node (2 sockets). RAM: TODO (confirm the reference node size). The DLAED0 internal D&C baseline queries about 6.0 GiB at N=16,384, and lazy replay at N=65,536 runs out of memory at more than 96 GiB on the reference node (Table 2). | gfortran with OpenMP, MKL 2025.3 (`MKLROOT`), MPFR (Table 1), Intel MPI with MKL ScaLAPACK (PDSTEBZ; `I_MPI_ROOT`), a C compiler |
+| CPU (Tables 1–5, Figs. 4–5) | A 56-core-class x86-64 node (2 sockets). The DLAED0 internal D&C baseline queries about 6.0 GiB at N=16,384, and lazy replay at N=65,536 runs out of memory at more than 96 GiB on the reference node (Table 2). | gfortran with OpenMP, MKL 2025.3 (`MKLROOT`), MPFR (Table 1), Intel MPI with MKL ScaLAPACK (PDSTEBZ; `I_MPI_ROOT`), a C compiler |
 
 ## 3. Getting started (Artifact Functional, < 30 min)
 ```
@@ -63,7 +63,7 @@ Step 0 (inputs): `bash cpu/jobs/run_spectrum_de_cache_job.sh` writes `results/da
 | Table 5 | `scripts/cpu/run_paper_cpu.sh table5` | CPU |
 | Fig. 4 | `scripts/cpu/run_paper_cpu.sh fig4` (threads 1, 2, 4, 8, 16, 28, 56; N=16,384 and 65,536) | CPU |
 | Fig. 5 | `scripts/cpu/run_paper_cpu.sh fig5` | CPU |
-CPU outputs (CSV/logs) go to `results/cpu/`, and GPU logs go to `results/fig6/` and `results/sec56/`. Full-run times: TODO.
+CPU outputs (CSV/logs) go to `results/cpu/`, and GPU logs go to `results/fig6/` and `results/sec56/`.
 
 ## 5. Expected results (values quoted from the paper)
 Absolute times depend on the machine. Reviewers should check the ratios and trends.
@@ -95,7 +95,7 @@ Absolute times depend on the machine. Reviewers should check the ratios and tren
   - 1D Laplacian: 0.60, 8,192, 20.5×
   - Anderson: 0.47, 234, 523.6×
   - The paper also reports 2868× for Anderson at N=65,536.
-- **Fig. 4**: BR self-speedup T1/Tp at N=65,536 tracks deflation. Clustered reaches its best time before 56 threads. The per-point values are in the figure (TODO: copy them from the source data).
+- **Fig. 4**: BR self-speedup T1/Tp at N=65,536 tracks deflation. Clustered reaches its best time before 56 threads.
 - **Fig. 5**: Static secular-root parallelism is 2.12–3.16× slower than adaptive on uniform, normal and clustered. Task-level is 4.79× slower on Toeplitz. Adaptive costs 2–3% probe overhead. On reduced dense N=49,152, BR state gives 6.6× and the adaptive scheduler 21.4× over lazy replay.
 - **Fig. 6** (H100; cuSOLVER/BR at N = 8K / 16K / 32K / 49K):
   - Normal: 1.1 / 1.6 / 2.3 / 3.5×
